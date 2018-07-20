@@ -115,8 +115,8 @@ module.exports = function(grunt) {
         },
         uglify: {
           options: {
-              compress: true,
-              mangle: false
+              compress: false,
+              mangle: true
           },
           minify: {
               files: {
