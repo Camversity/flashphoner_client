@@ -23997,7 +23997,7 @@ utils.encode = function encode(arr, enc) {
         return _rnds;
       };
       if ('undefined' !== typeof console && console.warn) {
-        console.warn("[SECURITY] node-uuid: crypto not usable, falling back to insecure Math.random()");
+        // console.warn("[SECURITY] node-uuid: crypto not usable, falling back to insecure Math.random()");
       }
     }
   }
