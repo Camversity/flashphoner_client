@@ -32737,7 +32737,9 @@ var MediaConnection = function () {
                         info: event.message + ' (' + event.filename + ':' + event.lineno + ')'
                     });
                 };
-                w.postMessage({ cmd: 'init', config: JSON.stringify(config) });
+                var config2 = Object.assign({}, config);
+                delete config2.display;
+                w.postMessage({ cmd: 'init', config: JSON.stringify(config2) });
             } catch (err) {
                 _logger.logger.error('error while initializing DemuxerWorker, fallback on DemuxerInline');
                 if (w) {
