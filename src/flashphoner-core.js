@@ -10,6 +10,20 @@ var browserDetails = require('webrtc-adapter').browserDetails;
 var LOG_PREFIX = "core";
 var isUsingTemasysPlugin = false;
 
+// Mocks to avoid errors in create-react-app
+
+if (!window.AdapterJS) {
+  window.AdapterJS = {
+    webRTCReady: function(fnc) {
+      fnc(true);
+    }
+  };
+}
+
+if (!window.AudioContext) {
+  window.AudioContext = function() {};
+}
+
 /**
  * @namespace Flashphoner
  */
