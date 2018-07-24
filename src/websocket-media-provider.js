@@ -55,6 +55,9 @@ var createConnection = function(options, handlers) {
             WSPlayer_.setVolume(volume);
         };
         var getVolume = function() {
+            if (audioContext.state !== 'running') {
+              return 0;
+            }
             if (WSPlayer_) {
                 return WSPlayer_.getVolume();
             }
