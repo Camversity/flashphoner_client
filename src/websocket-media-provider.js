@@ -144,7 +144,14 @@ var releaseMedia = function() {
     return false;
 };
 
+var src = null;
+
 var playFirstSound = function(noise) {
+    if (!!src && audioContext.state === 'suspended') {
+      audioContext.resume();
+      return;
+    }
+
     var audioBuffer = audioContext.createBuffer(1, 441, 44100);
     var output = audioBuffer.getChannelData(0);
     for (var i = 0; i < output.length; i++) {
@@ -154,7 +161,7 @@ var playFirstSound = function(noise) {
             output[i] = 0;
         }
     }
-    var src = audioContext.createBufferSource();
+    src = audioContext.createBufferSource();
     src.buffer = audioBuffer;
     src.connect(audioContext.destination);
     src.start(0);
